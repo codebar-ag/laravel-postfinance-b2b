@@ -1,0 +1,82 @@
+{
+    "name": "codebar-ag/postfinance-b2b",
+    "description": "B2B Service integration for Laravel",
+    "keywords": [
+        "postfinance",
+        "b2b",
+        "laravel",
+        "codebar-ag",
+        "laravel-postfinance-b2b"
+    ],
+    "homepage": "https://github.com/codebar-ag/laravel-postfinance-b2b",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sebastian Fix",
+            "email": "sebastian.fix@codebar.ch",
+            "homepage": "https://www.codebar.ch",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "ext-soap": "*",
+        "guzzlehttp/guzzle": "^7.2",
+        "illuminate/contracts": "^10.0",
+        "nyholm/psr7": "^1.8",
+        "phpro/soap-client": "^2.4",
+        "ricorocks-digital-agency/soap": "^1.7",
+        "spatie/laravel-package-tools": "^1.9.2",
+        "symfony/http-client": "^6.2"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.5",
+        "nunomaduro/collision": "^7.0",
+        "nunomaduro/larastan": "^2.4.0",
+        "orchestra/testbench": "^8.0",
+        "pestphp/pest": "2.x-dev",
+        "pestphp/pest-plugin-laravel": "2.x-dev",
+        "phpstan/extension-installer": "^1.1",
+        "phpstan/phpstan-deprecation-rules": "^1.0",
+        "phpstan/phpstan-phpunit": "^1.0",
+        "phpunit/phpunit": "^10.0",
+        "spatie/laravel-ray": "^1.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "CodebarAg\\PostfinanceB2B\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CodebarAg\\PostfinanceB2B\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "analyse": "vendor/bin/phpstan analyse",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/package-versions-deprecated": false,
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true,
+            "php-http/discovery": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "CodebarAg\\PostfinanceB2B\\PostfinanceB2BServiceProvider"
+            ],
+            "aliases": {
+                "PostfinanceB2B": "CodebarAg\\PostfinanceB2B\\Facades\\PostfinanceB2B"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

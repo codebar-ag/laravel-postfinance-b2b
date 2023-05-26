@@ -1,0 +1,43 @@
+<?php
+
+use Phpro\SoapClient\CodeGenerator\Assembler;
+use Phpro\SoapClient\CodeGenerator\Rules;
+use Phpro\SoapClient\CodeGenerator\Config\Config;
+use Soap\ExtSoapEngine\ExtSoapOptions;
+use Phpro\SoapClient\Soap\DefaultEngineFactory;
+
+return Config::create()
+    ->setEngine($engine = DefaultEngineFactory::create(
+        ExtSoapOptions::defaults('https://ebill-ki.postfinance.ch/B2BService/B2BService.svc?wsdl', [])
+            ->disableWsdlCache()
+    ))
+    ->setTypeDestination('src/Client//Type')
+    ->setTypeNamespace('CodebarAg\PostfinanceB2B\Tests\Feature\Type')
+    ->setClientDestination('src/Client/')
+    ->setClientName('PostfinanceClient')
+    ->setClientNamespace('CodebarAg\PostfinanceB2B\Tests\Feature')
+    ->setClassMapDestination('src/Client/')
+    ->setClassMapName('PostfinanceClassmap')
+    ->setClassMapNamespace('CodebarAg\PostfinanceB2B\Tests\Feature')
+    ->addRule(new Rules\AssembleRule(new Assembler\GetterAssembler(new Assembler\GetterAssemblerOptions())))
+    ->addRule(new Rules\AssembleRule(new Assembler\ImmutableSetterAssembler(
+        new Assembler\ImmutableSetterAssemblerOptions()
+    )))
+    ->addRule(
+        new Rules\IsRequestRule(
+            $engine->getMetadata(),
+            new Rules\MultiRule([
+                new Rules\AssembleRule(new Assembler\RequestAssembler()),
+                new Rules\AssembleRule(new Assembler\ConstructorAssembler(new Assembler\ConstructorAssemblerOptions())),
+            ])
+        )
+    )
+    ->addRule(
+        new Rules\IsResultRule(
+            $engine->getMetadata(),
+            new Rules\MultiRule([
+                new Rules\AssembleRule(new Assembler\ResultAssembler()),
+            ])
+        )
+    )
+;
