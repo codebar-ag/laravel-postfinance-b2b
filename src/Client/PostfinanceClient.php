@@ -55,8 +55,6 @@ class PostfinanceClient
      */
     public function executePing(ExecutePing $parameters): ExecutePingResponse
     {
-        dd(($this->caller)('ExecutePing', $parameters));
-
         return ($this->caller)('ExecutePing', $parameters);
     }
 }
