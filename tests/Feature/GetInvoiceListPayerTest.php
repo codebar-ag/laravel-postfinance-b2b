@@ -5,8 +5,6 @@ use CodebarAg\PostfinanceB2B\CLient\Type\ExecutePing;
 
 use Http\Client\Common\PluginClient;
 use Soap\Psr18Transport\Psr18Transport;
-use Http\Client\Common\PluginClient;
-use Soap\Psr18Transport\Psr18Transport;
 use Soap\Psr18WsseMiddleware\WsseMiddleware;
 
 it('b2b service test', function () {
