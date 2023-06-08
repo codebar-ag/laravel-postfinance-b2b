@@ -8,8 +8,5 @@ it('b2b service test', function () {
     $client = PostfinanceClientFactory::factory($wsdl = 'https://ebill-ki.postfinance.ch/B2BService/B2BService.svc?wsdl');
     $response = $client->executePing(new ExecutePing(null, '41100000198521795', true, true));
 
-    dd($response);
-
-
 })
     ->group('get', 'test');
