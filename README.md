@@ -1,11 +1,6 @@
 ## Usage
 Invoice download web services provided by PostFinance
 
-
-```php
-
-```
-
 ## 🚧 Testing
 
 Copy your own phpunit.xml-file.
