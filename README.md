@@ -1,8 +1,7 @@
 ## Usage
 
 ```php
-    $request = new GetPublicListing(142, '&expand=documents&expand=images');
-    $response = $request->send();
+
 ```
 
 ## 🚧 Testing
@@ -17,7 +16,7 @@ Modify environment variables in the phpunit.xml-file:
 
 ```xml
 
-<env name="FLATFOX_TOXEN" value="token"/>
+
 ```
 
 Run the tests:

@@ -26,7 +26,6 @@
         "nyholm/psr7": "^1.8",
         "php-soap/psr18-wsse-middleware": "^2.1",
         "phpro/soap-client": "^2.4",
-        "ricorocks-digital-agency/soap": "^1.7",
         "spatie/laravel-package-tools": "^1.9.2",
         "symfony/http-client": "^6.2"
     },
