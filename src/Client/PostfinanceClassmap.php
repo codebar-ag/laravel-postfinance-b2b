@@ -1,6 +1,6 @@
 <?php
 
-namespace CodebarAg\PostfinanceB2B\CLient;
+namespace CodebarAg\PostfinanceB2B\Client;
 
 use Soap\ExtSoapEngine\Configuration\ClassMap\ClassMap;
 use Soap\ExtSoapEngine\Configuration\ClassMap\ClassMapCollection;

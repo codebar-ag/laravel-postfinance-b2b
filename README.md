@@ -31,7 +31,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
 
 ```bash
-composer test
+POSTFINANCE_B2B_USERNAME=xxxxx POSTFINANCE_B2B_PASSWORD='XXXXX' POSTFINANCE_B2B_DEBUG=true composer test
 ```
 
 ### Code Style

@@ -1,6 +1,6 @@
 <?php
 
-namespace CodebarAg\PostfinanceB2B\CLient\Type;
+namespace CodebarAg\PostfinanceB2B\Client\Type;
 
 class InvoiceReport
 {
