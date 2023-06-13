@@ -1,13 +1,13 @@
 <?php
 
-namespace CodebarAg\PostfinanceB2B\CLient;
+namespace CodebarAg\PostfinanceB2B\Client;
 
-use CodebarAg\PostfinanceB2B\CLient\Type\ExecutePing;
-use CodebarAg\PostfinanceB2B\CLient\Type\ExecutePingResponse;
-use CodebarAg\PostfinanceB2B\CLient\Type\GetInvoiceListPayer;
-use CodebarAg\PostfinanceB2B\CLient\Type\GetInvoiceListPayerResponse;
-use CodebarAg\PostfinanceB2B\CLient\Type\GetInvoicePayer;
-use CodebarAg\PostfinanceB2B\CLient\Type\GetInvoicePayerResponse;
+use CodebarAg\PostfinanceB2B\Client\Type\ExecutePing;
+use CodebarAg\PostfinanceB2B\Client\Type\ExecutePingResponse;
+use CodebarAg\PostfinanceB2B\Client\Type\GetInvoiceListPayer;
+use CodebarAg\PostfinanceB2B\Client\Type\GetInvoiceListPayerResponse;
+use CodebarAg\PostfinanceB2B\Client\Type\GetInvoicePayer;
+use CodebarAg\PostfinanceB2B\Client\Type\GetInvoicePayerResponse;
 use Phpro\SoapClient\Caller\Caller;
 use Phpro\SoapClient\Exception\SoapException;
 use Phpro\SoapClient\Type\RequestInterface;

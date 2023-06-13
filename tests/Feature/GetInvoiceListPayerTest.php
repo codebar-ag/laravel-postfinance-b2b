@@ -1,12 +1,13 @@
 <?php
 
 use CodebarAg\PostfinanceB2B\CLient\PostfinanceClientFactory;
-use CodebarAg\PostfinanceB2B\CLient\Type\ExecutePing;
+use CodebarAg\PostfinanceB2B\Client\Type\GetInvoiceListPayer;
 
-it('b2b service test', function () {
-
-    $client = PostfinanceClientFactory::factory($wsdl = 'https://ebill-ki.postfinance.ch/B2BService/B2BService.svc?wsdl');
-    $response = $client->executePing(new ExecutePing(null, '41100000198521795', true, true));
+it('b2b service getInvoiceListPayer test', function () {
+    $config = require dirname(__DIR__, 2).'/config/postfinance-b2b.php';
+    $client = PostfinanceClientFactory::factory($config);
+    $response = $client->getInvoiceListPayer(new GetInvoiceListPayer('41100000198521795', false));
+    expect($response->getGetInvoiceListPayerResult()->getInvoiceReport())->toBeIterable();
 
 })
     ->group('get', 'test');
