@@ -1,5 +1,5 @@
 {
-    "name": "codebar-ag/postfinance-b2b",
+    "name": "codebar-ag/laravel-postfinance-b2b",
     "description": "B2B Service integration for Laravel",
     "keywords": [
         "postfinance",
@@ -12,8 +12,8 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Sebastian Fix",
-            "email": "sebastian.fix@codebar.ch",
+            "name": "Sebastian Bürgin",
+            "email": "sebastian.buergin@codebar.ch",
             "homepage": "https://www.codebar.ch",
             "role": "Developer"
         }
