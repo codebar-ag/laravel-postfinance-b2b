@@ -11,7 +11,7 @@ class PostfinanceClassmap
     {
         return new ClassMapCollection(
             new ClassMap('ArrayOfInvoiceReport', Type\ArrayOfInvoiceReport::class),
-            //new ClassMap('InvoiceReport', Type\InvoiceReport::class),
+            new ClassMap('InvoiceReport', Type\InvoiceReport::class),
             new ClassMap('DownloadFile', Type\DownloadFile::class),
             new ClassMap('GetInvoicePayer', Type\GetInvoicePayer::class),
             new ClassMap('GetInvoicePayerResponse', Type\GetInvoicePayerResponse::class),
