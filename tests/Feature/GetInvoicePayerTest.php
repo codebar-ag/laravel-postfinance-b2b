@@ -18,5 +18,4 @@ it('b2b service getInvoicePayer test', function () {
     $response = $client->getInvoicePayer(new GetInvoicePayer($payerId, $billerId, $transactionId, $fileType));
 
     expect($response->getGetInvoicePayerResult()->getData())->toBeString()->not()->toBeEmpty();
-})
-    ->group('get', 'test');
+})->group('get', 'test');
