@@ -11,7 +11,6 @@ it('b2b service executePing test', function () {
 
     $client = PostfinanceClientFactory::factory($config);
     $response = $client->executePing(new ExecutePing(null, $payerId, null, null));
-    expect($response->getExecutePingResult())->toBeNumeric();
 
-})
-    ->group('get', 'test');
+    expect($response->getExecutePingResult())->toBeNumeric();
+})->group('get', 'test');
