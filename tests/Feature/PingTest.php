@@ -1,7 +1,7 @@
 <?php
 
-use CodebarAg\PostfinanceB2B\CLient\PostfinanceClientFactory;
-use CodebarAg\PostfinanceB2B\CLient\Type\ExecutePing;
+use CodebarAg\PostfinanceB2B\Client\PostfinanceClientFactory;
+use CodebarAg\PostfinanceB2B\Client\Type\ExecutePing;
 
 it('b2b service executePing test', function () {
 
