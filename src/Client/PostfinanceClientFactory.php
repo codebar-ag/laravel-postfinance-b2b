@@ -12,7 +12,6 @@ use Monolog\Logger;
 use Phpro\SoapClient\Caller\EngineCaller;
 use Phpro\SoapClient\Caller\EventDispatchingCaller;
 use Phpro\SoapClient\Soap\DefaultEngineFactory;
-use function Psl\invariant;
 use Soap\ExtSoapEngine\ExtSoapOptions;
 use Soap\Psr18Transport\Middleware\RemoveEmptyNodesMiddleware;
 use Soap\Psr18Transport\Psr18Transport;
@@ -20,6 +19,8 @@ use Soap\Psr18WsseMiddleware\WsaMiddleware2005;
 use Soap\Psr18WsseMiddleware\WSSecurity\Entry;
 use Soap\Psr18WsseMiddleware\WsseMiddleware;
 use Symfony\Component\EventDispatcher\EventDispatcher;
+
+use function Psl\invariant;
 
 class PostfinanceClientFactory
 {
