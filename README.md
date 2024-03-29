@@ -12,8 +12,16 @@ cp phpunit.xml.dist phpunit.xml
 Modify environment variables in the phpunit.xml-file:
 
 ```xml
+    <env name="POSTFINANCE_B2B_WSDL" value="wds"/>
+    <env name="POSTFINANCE_B2B_CACHE_WSDL" value="wsdl"/>
+    <env name="POSTFINANCE_B2B_USERNAME" value="username"/>
+    <env name="POSTFINANCE_B2B_PASSWORD" value="password"/>
+    <env name="POSTFINANCE_B2B_DEBUG" value="debug"/>
 
-
+    <env name="POSTFINANCE_B2B_TESTS_PAYER_ID" value=""/>
+    <env name="POSTFINANCE_B2B_TESTS_BILLER_ID" value=""/>
+    <env name="POSTFINANCE_B2B_TESTS_TRANSACTION_ID" value=""/>
+    <env name="POSTFINANCE_B2B_TESTS_FILE_TYPE" value="RGXMLSIG"/>
 ```
 
 Run the tests:
