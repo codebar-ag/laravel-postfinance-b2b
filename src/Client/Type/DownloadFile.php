@@ -4,6 +4,7 @@ namespace CodebarAg\PostfinanceB2B\Client\Type;
 
 class DownloadFile
 {
+
     /**
      * @var string
      */

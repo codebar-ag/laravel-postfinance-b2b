@@ -12,15 +12,10 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        # os: [ ubuntu-latest, windows-latest ]
         os: [ ubuntu-latest ]
-        php: [ 8.2 ]
-        laravel: [ 10.* ]
-        #stability: [ prefer-lowest, prefer-stable ]
-        stability: [ prefer-stable ]
-        include:
-          - laravel: 10.*
-            testbench: 9.*
+        php: [ 8.2, 8.3 ]
+        laravel: [ 11.* ]
+        stability: [ prefer-lowest, prefer-stable ]
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }} - ${{ matrix.os }}
 
@@ -42,16 +37,18 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
+          composer require "laravel/framework:${{ matrix.laravel }}" --no-interaction --no-update
           composer update --${{ matrix.stability }} --prefer-dist --no-interaction
+
+      - name: Execute tests
+        run: cp phpunit.xml.dist phpunit.xml
 
       - name: Execute tests
         run: vendor/bin/pest
 
-      - name: Store test reports
+      - name: Store Log Artifacts
+        if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: Store report
-          retention-days: 1
-          path: |
-            ./reports
+          name: Store report artifacts
+          path: ./vendor/orchestra/testbench-core/laravel/storage/logs
