@@ -46,7 +46,7 @@ class PostfinanceClientFactory
                         new HeaderDefaultsPlugin([
                             'User-Agent' => 'Laravel PostFinance B2B',
                         ]),
-                        new RemoveEmptyNodesMiddleware(),
+                        new RemoveEmptyNodesMiddleware,
                         new WsseMiddleware(
                             outgoing: [
                                 (new Entry\Username($config['username']))
@@ -54,7 +54,7 @@ class PostfinanceClientFactory
                                     ->withDigest(false),
                             ]
                         ),
-                        new WsaMiddleware2005(),
+                        new WsaMiddleware2005,
                         ...($config['debug'] ? [
                             new LoggerPlugin(
                                 (new Logger('http'))->pushHandler(
@@ -68,9 +68,9 @@ class PostfinanceClientFactory
             )
         );
 
-		ray($engine);
+        ray($engine);
 
-        $eventDispatcher = new EventDispatcher();
+        $eventDispatcher = new EventDispatcher;
         $caller = new EventDispatchingCaller(new EngineCaller($engine), $eventDispatcher);
 
         return new PostfinanceClient($caller);
