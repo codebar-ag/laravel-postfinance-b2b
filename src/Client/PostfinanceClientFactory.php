@@ -68,6 +68,8 @@ class PostfinanceClientFactory
             )
         );
 
+		ray($engine);
+
         $eventDispatcher = new EventDispatcher();
         $caller = new EventDispatchingCaller(new EngineCaller($engine), $eventDispatcher);
 
