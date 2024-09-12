@@ -20,7 +20,7 @@ jobs:
         stability: [ prefer-stable ]
         include:
           - laravel: 10.*
-            testbench: 8.*
+            testbench: 9.*
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }} - ${{ matrix.os }}
 
@@ -47,10 +47,6 @@ jobs:
 
       - name: Execute tests
         run: vendor/bin/pest
-        env:
-          ZAMMAD_URL: ${{ secrets.ZAMMAD_URL }}
-          ZAMMAD_TOKEN: ${{ secrets.ZAMMAD_TOKEN }}
-          ZAMMAD_OBJECT_REFERENCE_ERROR_IGNORE: true
 
       - name: Store test reports
         uses: actions/upload-artifact@v4
