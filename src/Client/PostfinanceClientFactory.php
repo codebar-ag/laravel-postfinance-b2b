@@ -24,53 +24,53 @@ use function Psl\invariant;
 
 class PostfinanceClientFactory
 {
-	/**
-	 * @param  array{cache_wsdl: WSDL_CACHE_NONE|WSDL_CACHE_DISK|WSDL_CACHE_BOTH, wsdl: string, username: string, password: string, debug: bool}  $config
-	 */
-	public static function factory(array $config): PostfinanceClient
-	{
-		invariant($config['wsdl'], 'No WSDL location available');
-		invariant($config['username'], 'No username has been set. Please specify through .env POSTFINANCE_B2B_USERNAME');
-		invariant($config['password'], 'No username has been set. Please specify through .env POSTFINANCE_B2B_PASSWORD');
+    /**
+     * @param  array{cache_wsdl: WSDL_CACHE_NONE|WSDL_CACHE_DISK|WSDL_CACHE_BOTH, wsdl: string, username: string, password: string, debug: bool}  $config
+     */
+    public static function factory(array $config): PostfinanceClient
+    {
+        invariant($config['wsdl'], 'No WSDL location available');
+        invariant($config['username'], 'No username has been set. Please specify through .env POSTFINANCE_B2B_USERNAME');
+        invariant($config['password'], 'No username has been set. Please specify through .env POSTFINANCE_B2B_PASSWORD');
 
-		$engine = DefaultEngineFactory::create(
-			ExtSoapOptions::defaults($config['wsdl'], [
-				'soap_version' => SOAP_1_2,
-				'cache_wsdl' => $config['cache_wsdl'],
-			])
-				->withClassMap(PostfinanceClassmap::getCollection()),
-			Psr18Transport::createForClient(
-				new PluginClient(
-					Psr18ClientDiscovery::find(),
-					[
-						new HeaderDefaultsPlugin([
-							'User-Agent' => 'Laravel PostFinance B2B',
-						]),
-						new RemoveEmptyNodesMiddleware,
-						new WsseMiddleware(
-							outgoing: [
-								(new Entry\Username($config['username']))
-									->withPassword($config['password'])
-									->withDigest(false),
-							]
-						),
-						new WsaMiddleware2005,
-						...($config['debug'] ? [
-							new LoggerPlugin(
-								(new Logger('http'))->pushHandler(
-									new StreamHandler(STDOUT)
-								),
-								new FullHttpMessageFormatter(maxBodyLength: 99999)
-							),
-						] : []),
-					]
-				)
-			)
-		);
+        $engine = DefaultEngineFactory::create(
+            ExtSoapOptions::defaults($config['wsdl'], [
+                'soap_version' => SOAP_1_2,
+                'cache_wsdl' => $config['cache_wsdl'],
+            ])
+                ->withClassMap(PostfinanceClassmap::getCollection()),
+            Psr18Transport::createForClient(
+                new PluginClient(
+                    Psr18ClientDiscovery::find(),
+                    [
+                        new HeaderDefaultsPlugin([
+                            'User-Agent' => 'Laravel PostFinance B2B',
+                        ]),
+                        new RemoveEmptyNodesMiddleware,
+                        new WsseMiddleware(
+                            outgoing: [
+                                (new Entry\Username($config['username']))
+                                    ->withPassword($config['password'])
+                                    ->withDigest(false),
+                            ]
+                        ),
+                        new WsaMiddleware2005,
+                        ...($config['debug'] ? [
+                            new LoggerPlugin(
+                                (new Logger('http'))->pushHandler(
+                                    new StreamHandler(STDOUT)
+                                ),
+                                new FullHttpMessageFormatter(maxBodyLength: 99999)
+                            ),
+                        ] : []),
+                    ]
+                )
+            )
+        );
 
-		$eventDispatcher = new EventDispatcher;
-		$caller = new EventDispatchingCaller(new EngineCaller($engine), $eventDispatcher);
+        $eventDispatcher = new EventDispatcher;
+        $caller = new EventDispatchingCaller(new EngineCaller($engine), $eventDispatcher);
 
-		return new PostfinanceClient($caller);
-	}
+        return new PostfinanceClient($caller);
+    }
 }

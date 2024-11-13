@@ -10,6 +10,5 @@ it('b2b service getInvoiceListPayer test', function () {
 
     $client = PostfinanceClientFactory::factory($config);
     $response = $client->getInvoiceListPayer(new GetInvoiceListPayer($payerId, false));
-
     expect($response->getGetInvoiceListPayerResult()->getInvoiceReport())->toBeIterable();
 })->group('get', 'test');
