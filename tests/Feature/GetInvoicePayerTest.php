@@ -19,4 +19,4 @@ it('b2b service getInvoicePayer test', function () {
 
     ray($response->getGetInvoicePayerResult()->getData());
     expect($response->getGetInvoicePayerResult()->getData())->toBeString()->not()->toBeEmpty();
-})->group('get', 'test')->only();
+})->group('get', 'test');
