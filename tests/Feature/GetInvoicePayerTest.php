@@ -17,5 +17,6 @@ it('b2b service getInvoicePayer test', function () {
     $client = PostfinanceClientFactory::factory($config);
     $response = $client->getInvoicePayer(new GetInvoicePayer($payerId, $billerId, $transactionId, $fileType));
 
+    ray($response->getGetInvoicePayerResult()->getData());
     expect($response->getGetInvoicePayerResult()->getData())->toBeString()->not()->toBeEmpty();
-})->group('get', 'test');
+})->group('get', 'test')->skip('no transaction in test environment available');

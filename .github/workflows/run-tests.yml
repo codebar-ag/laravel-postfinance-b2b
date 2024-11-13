@@ -12,18 +12,16 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        # os: [ ubuntu-latest, windows-latest ]
         os: [ ubuntu-latest ]
         php: [ 8.2, 8.3 ]
         laravel: [ 11.* ]
-        #stability: [ prefer-lowest, prefer-stable ]
         stability: [ prefer-stable ]
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }} - ${{ matrix.os }}
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -43,16 +41,14 @@ jobs:
           composer update --${{ matrix.stability }} --prefer-dist --no-interaction
 
       - name: Execute tests
-        run: vendor/bin/pest
-        env:
-          ZAMMAD_URL: ${{ secrets.ZAMMAD_URL }}
-          ZAMMAD_TOKEN: ${{ secrets.ZAMMAD_TOKEN }}
-          ZAMMAD_OBJECT_REFERENCE_ERROR_IGNORE: true
+        run: cp phpunit.xml.dist phpunit.xml
 
-      - name: Store test reports
-        uses: actions/upload-artifact@v2
+      - name: Execute tests
+        run: vendor/bin/pest
+
+      - name: Store Log Artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
         with:
-          name: Store report
-          retention-days: 1
-          path: |
-            ./reports
+          name: Store report artifacts
+          path: ./vendor/orchestra/testbench-core/laravel/storage/logs

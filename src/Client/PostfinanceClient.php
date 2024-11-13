@@ -2,6 +2,7 @@
 
 namespace CodebarAg\PostfinanceB2B\Client;
 
+use CodebarAg\PostfinanceB2B\Client\Type\DownloadFile;
 use CodebarAg\PostfinanceB2B\Client\Type\ExecutePing;
 use CodebarAg\PostfinanceB2B\Client\Type\ExecutePingResponse;
 use CodebarAg\PostfinanceB2B\Client\Type\GetInvoiceListPayer;
@@ -23,6 +24,17 @@ class PostfinanceClient
     public function __construct(Caller $caller)
     {
         $this->caller = $caller;
+    }
+
+    /**
+     * @param  RequestInterface|Type\DownloadFile  $parameters
+     * @return ResultInterface|Type\GetInvoicePayerResponse
+     *
+     * @throws SoapException
+     */
+    public function downloadFile(DownloadFile $parameters): GetInvoicePayerResponse
+    {
+        return ($this->caller)('DownloadFile', $parameters);
     }
 
     /**
