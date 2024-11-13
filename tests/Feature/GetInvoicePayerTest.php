@@ -10,8 +10,8 @@ it('b2b service getInvoicePayer test', function () {
     $config = config('postfinance-b2b');
 
     $payerId = config('postfinance-b2b.tests.payer_id');
-    $billerId = '41101000000834484'; //config('postfinance-b2b.tests.biller_id');
-    $transactionId = '9360415238'; //config('postfinance-b2b.tests.transaction_id');
+    $billerId = config('postfinance-b2b.tests.biller_id');
+    $transactionId = config('postfinance-b2b.tests.transaction_id');
     $fileType = config('postfinance-b2b.tests.file_type');
 
     $client = PostfinanceClientFactory::factory($config);
@@ -19,4 +19,4 @@ it('b2b service getInvoicePayer test', function () {
 
     ray($response->getGetInvoicePayerResult()->getData());
     expect($response->getGetInvoicePayerResult()->getData())->toBeString()->not()->toBeEmpty();
-})->group('get', 'test');
+})->group('get', 'test')->skip('no transaction in test environment available');
