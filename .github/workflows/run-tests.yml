@@ -45,6 +45,13 @@ jobs:
 
       - name: Execute tests
         run: vendor/bin/pest
+        env:
+          POSTFINANCE_B2B_USERNAME: ${{ secrets.POSTFINANCE_B2B_USERNAME }}
+          POSTFINANCE_B2B_PASSWORD: ${{ secrets.POSTFINANCE_B2B_PASSWORD }}
+          POSTFINANCE_B2B_WSDL: ${{ secrets.POSTFINANCE_B2B_WSDL }}
+          POSTFINANCE_B2B_TESTS_PAYER_ID: ${{ secrets.POSTFINANCE_B2B_TESTS_PAYER_ID }}
+          POSTFINANCE_B2B_TESTS_BILLER_ID: ${{ secrets.POSTFINANCE_B2B_TESTS_BILLER_ID }}
+          POSTFINANCE_B2B_TESTS_TRANSACTION_ID: ${{ secrets.POSTFINANCE_B2B_TESTS_TRANSACTION_ID }}
 
       - name: Store Log Artifacts
         if: failure()
