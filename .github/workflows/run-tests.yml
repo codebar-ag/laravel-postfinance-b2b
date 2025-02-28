@@ -24,6 +24,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Clear Composer Cache
+        run: composer clear-cache
+
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
