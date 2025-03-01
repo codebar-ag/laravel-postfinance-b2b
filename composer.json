@@ -70,9 +70,6 @@
             "php-http/discovery": true
         }
     },
-    "discovery": {
-        "psr/http-factory-implementation": "GuzzleHttp\\Psr7\\HttpFactory"
-    },
     "extra": {
         "laravel": {
             "providers": [
