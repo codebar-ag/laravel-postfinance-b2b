@@ -68,7 +68,7 @@
             "composer/package-versions-deprecated": false,
             "pestphp/pest-plugin": true,
             "phpstan/extension-installer": true,
-            "php-http/discovery": true
+            "php-http/discovery": false
         }
     },
     "extra": {
