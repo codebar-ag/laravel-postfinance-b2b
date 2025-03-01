@@ -69,8 +69,11 @@
             "composer/package-versions-deprecated": false,
             "pestphp/pest-plugin": true,
             "phpstan/extension-installer": true,
-            "php-http/discovery": false
+            "php-http/discovery": true
         }
+    },
+    "discovery": {
+        "psr/http-factory-implementation": "GuzzleHttp\\Psr7\\HttpFactory"
     },
     "extra": {
         "laravel": {
