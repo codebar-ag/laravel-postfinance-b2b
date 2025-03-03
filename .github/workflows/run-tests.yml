@@ -31,11 +31,23 @@ jobs:
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick, fileinfo
           coverage: none
 
-      - name: Clear Composer Cache
+      - name: Force clean environment
         run: |
-          composer clear-cache
           rm -rf vendor composer.lock
-          rm -rf ~/.composer/cache
+          composer clear-cache
+          composer install --no-cache --prefer-dist --no-interaction
+
+      - name: Debug Installed Packages
+        run: |
+          php -v
+          composer show robrichards/xmlseclibs
+          composer why robrichards/xmlseclibs
+
+      - name: Force Upgrade of xmlseclibs
+        run: |
+          composer remove robrichards/xmlseclibs
+          composer require robrichards/xmlseclibs:^3.1 --no-update
+          composer update --prefer-dist --no-interaction
 
       - name: Install dependencies
         run: |
