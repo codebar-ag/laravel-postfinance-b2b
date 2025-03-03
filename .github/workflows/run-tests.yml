@@ -35,24 +35,22 @@ jobs:
         run: |
           rm -rf vendor composer.lock
           composer clear-cache
-          composer install --no-cache --prefer-dist --no-interaction
+
+      - name: Force Upgrade of xmlseclibs
+        run: |
+          composer remove robrichards/xmlseclibs
+          composer require robrichards/xmlseclibs:^3.1 --no-update
+
+      - name: Install dependencies
+        run: |
+          composer require "laravel/framework:${{ matrix.laravel }}" --no-interaction --no-update
+          composer update --${{ matrix.stability }} --prefer-dist --no-interaction
 
       - name: Debug Installed Packages
         run: |
           php -v
           composer show robrichards/xmlseclibs
           composer why robrichards/xmlseclibs
-
-      - name: Force Upgrade of xmlseclibs
-        run: |
-          composer remove robrichards/xmlseclibs
-          composer require robrichards/xmlseclibs:^3.1 --no-update
-          composer update --prefer-dist --no-interaction
-
-      - name: Install dependencies
-        run: |
-          composer require "laravel/framework:${{ matrix.laravel }}" --no-interaction --no-update
-          composer update --${{ matrix.stability }} --prefer-dist --no-interaction
 
       - name: Execute tests
         run: cp phpunit.xml.dist phpunit.xml
