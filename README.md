@@ -1,4 +1,41 @@
-## Usage
+<img src="https://banners.beyondco.de/Laravel%20Postfinance%20B2B.png?theme=light&packageManager=composer+require&packageName=codebar-ag%2Flaravel-postfinance-b2b&pattern=circuitBoard&style=style_2&description=An+opinionated+way+to+integrate+postfinance-b2b+with+Laravel&md=1&showWatermark=0&fontSize=150px&images=document-download&widths=500&heights=500">
+
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/codebar-ag/laravel-postfinance-b2b.svg?style=flat-square)](https://packagist.org/packages/codebar-ag/laravel-postfinance-b2b)
+[![GitHub-Tests](https://github.com/codebar-ag/laravel-postfinance-b2b/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/codebar-ag/laravel-postfinance-b2b/actions/workflows/run-tests.yml)
+[![GitHub Code Style](https://github.com/codebar-ag/laravel-postfinance-b2b/actions/workflows/fix-php-code-style-issues.yml/badge.svg?branch=main)](https://github.com/codebar-ag/laravel-postfinance-b2b/actions/workflows/fix-php-code-style-issues.yml)
+[![Total Downloads](https://img.shields.io/packagist/dt/codebar-ag/laravel-postfinance-b2b.svg?style=flat-square)](https://packagist.org/packages/codebar-ag/laravel-postfinance-b2b)
+
+This package was developed to give you a quick start to communicate with the
+PostFinance B2B REST API.
+
+## 💡 What is PostFinance B2B?
+
+PostFinance B2B is a digital interface for all your invoices
+where you can send and receive your invoices electronically.
+
+## 🛠 Requirements
+
+| Package |     PHP     | Laravel | 
+|:-------:|:-----------:|:-------:|
+| v12.0.0 | ^8.2 - ^8.4 |  12.x   |
+| v11.0.0 | ^8.2 - ^8.3 |  11.x   |
+
+## ⚙️ Installation
+
+You can install the package via composer:
+
+```bash
+composer require codebar-ag/laravel-postfinance-b2b
+```
+
+Add the following environment variables to your `.env` file:
+
+```bash
+POSTFINANCE_B2B_USERNAME=
+POSTFINANCE_B2B_PASSWORD=
+```
+
+## 🏗 Usage
 
 Invoice download web services provided by PostFinance
 
