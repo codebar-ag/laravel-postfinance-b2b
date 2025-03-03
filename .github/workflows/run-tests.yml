@@ -28,31 +28,13 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
-          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick, fileinfo
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick, fileinfo, openssl
           coverage: none
-
-      - name: Force clean environment
-        run: |
-          rm -rf vendor composer.lock
-          composer clear-cache
-          export COMPOSER_CACHE_DIR='/dev/null'
-
-      - name: Ensure Correct Dependencies
-        run: |
-          composer remove robrichards/xmlseclibs robrichards/wse-php
-          composer require robrichards/xmlseclibs:^3.1 robrichards/wse-php:^2.0 --no-update
 
       - name: Install dependencies
         run: |
           composer require "laravel/framework:${{ matrix.laravel }}" --no-interaction --no-update
           composer update --${{ matrix.stability }} --prefer-dist --no-interaction
-
-      - name: Debug Installed Packages
-        run: |
-          php -v
-          composer show robrichards/xmlseclibs
-          composer show robrichards/wse-php
-          composer why robrichards/xmlseclibs
 
       - name: Execute tests
         run: cp phpunit.xml.dist phpunit.xml
