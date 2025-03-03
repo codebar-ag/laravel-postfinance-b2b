@@ -41,6 +41,9 @@ jobs:
           composer require "laravel/framework:${{ matrix.laravel }}" --no-interaction --no-update
           composer update --${{ matrix.stability }} --prefer-dist --no-interaction
 
+      - name: Dump Autoload
+        run: composer dump-autoload
+
       - name: Execute tests
         run: cp phpunit.xml.dist phpunit.xml
 
