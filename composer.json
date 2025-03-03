@@ -70,9 +70,6 @@
       "php-http/discovery": true
     }
   },
-  "replace": {
-    "robrichards/xmlseclibs": "2.0.0"
-  },
   "extra": {
     "laravel": {
       "providers": [
