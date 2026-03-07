@@ -1,6 +1,6 @@
 <?php
 
-use CodebarAg\PostfinanceB2B\CLient\PostfinanceClientFactory;
+use CodebarAg\PostfinanceB2B\Client\PostfinanceClientFactory;
 use CodebarAg\PostfinanceB2B\Client\Type\GetInvoiceListPayer;
 
 it('b2b service getInvoiceListPayer test', function () {
