@@ -27,8 +27,8 @@ class PostfinanceClient
     }
 
     /**
-     * @param  RequestInterface|Type\DownloadFile  $parameters
-     * @return ResultInterface|Type\GetInvoicePayerResponse
+     * @param  RequestInterface|DownloadFile  $parameters
+     * @return ResultInterface|GetInvoicePayerResponse
      *
      * @throws SoapException
      */
@@ -38,8 +38,8 @@ class PostfinanceClient
     }
 
     /**
-     * @param  RequestInterface|Type\GetInvoicePayer  $parameters
-     * @return ResultInterface|Type\GetInvoicePayerResponse
+     * @param  RequestInterface|GetInvoicePayer  $parameters
+     * @return ResultInterface|GetInvoicePayerResponse
      *
      * @throws SoapException
      */
@@ -49,8 +49,8 @@ class PostfinanceClient
     }
 
     /**
-     * @param  RequestInterface|Type\GetInvoiceListPayer  $parameters
-     * @return ResultInterface|Type\GetInvoiceListPayerResponse
+     * @param  RequestInterface|GetInvoiceListPayer  $parameters
+     * @return ResultInterface|GetInvoiceListPayerResponse
      *
      * @throws SoapException
      */
@@ -60,8 +60,8 @@ class PostfinanceClient
     }
 
     /**
-     * @param  RequestInterface|Type\ExecutePing  $parameters
-     * @return ResultInterface|Type\ExecutePingResponse
+     * @param  RequestInterface|ExecutePing  $parameters
+     * @return ResultInterface|ExecutePingResponse
      *
      * @throws SoapException
      */
