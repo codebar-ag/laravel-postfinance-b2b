@@ -12,14 +12,10 @@
   "license": "MIT",
   "authors": [
     {
-      "name": "Sebastian Bürgin-Fix",
-      "email": "sebastian.buergin@buergin.ch",
-      "homepage": "https://www.codebar.ch",
-      "role": "Sofware-Engineer"
-    },
-    {
-      "name": "Rhys Lees",
-      "role": "Software-Engineer"
+        "name": "Sebastian Bürgin-Fix",
+        "email": "helpdesk@codebar.ch",
+        "homepage": "https://www.codebar.ch",
+        "role": "Software-Engineer"
     }
   ],
   "require": {
