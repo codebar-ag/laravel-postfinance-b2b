@@ -31,3 +31,8 @@ it('requires a password', function () {
 it('requires a wsdl location', function () {
     PostfinanceClientFactory::factory(offlineFactoryConfig(['wsdl' => '']));
 })->throws(InvariantViolationException::class, 'No WSDL location available');
+
+it('builds a client with debug logging enabled', function () {
+    expect(PostfinanceClientFactory::factory(offlineFactoryConfig(['debug' => true])))
+        ->toBeInstanceOf(PostfinanceClient::class);
+});

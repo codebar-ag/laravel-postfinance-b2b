@@ -6,7 +6,6 @@ use Http\Client\Common\Plugin\HeaderDefaultsPlugin;
 use Http\Client\Common\Plugin\LoggerPlugin;
 use Http\Client\Common\PluginClient;
 use Http\Discovery\Psr18ClientDiscovery;
-use Http\Message\Formatter\FullHttpMessageFormatter;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Phpro\SoapClient\Caller\EngineCaller;
@@ -60,7 +59,7 @@ class PostfinanceClientFactory
                                 (new Logger('http'))->pushHandler(
                                     new StreamHandler(STDOUT)
                                 ),
-                                new FullHttpMessageFormatter(maxBodyLength: 99999)
+                                new RedactingHttpMessageFormatter(maxBodyLength: 99999)
                             ),
                         ] : []),
                     ]
