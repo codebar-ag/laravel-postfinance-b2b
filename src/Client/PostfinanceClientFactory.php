@@ -29,9 +29,9 @@ class PostfinanceClientFactory
      */
     public static function factory(array $config): PostfinanceClient
     {
-        invariant($config['wsdl'], 'No WSDL location available');
-        invariant($config['username'], 'No username has been set. Please specify through .env POSTFINANCE_B2B_USERNAME');
-        invariant($config['password'], 'No username has been set. Please specify through .env POSTFINANCE_B2B_PASSWORD');
+        invariant((bool) $config['wsdl'], 'No WSDL location available');
+        invariant((bool) $config['username'], 'No username has been set. Please specify through .env POSTFINANCE_B2B_USERNAME');
+        invariant((bool) $config['password'], 'No password has been set. Please specify through .env POSTFINANCE_B2B_PASSWORD');
 
         $engine = DefaultEngineFactory::create(
             ExtSoapOptions::defaults($config['wsdl'], [
