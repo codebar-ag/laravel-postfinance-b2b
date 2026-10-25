@@ -29,6 +29,7 @@
     "php-http/logger-plugin": "^1.4.0",
     "php-soap/psr18-wsse-middleware": "^2.5.0 <2.7.0",
     "phpro/soap-client": "^3.4.1",
+    "robrichards/wse-php": "^2.0.3",
     "spatie/laravel-package-tools": "^1.19"
   },
   "require-dev": {
