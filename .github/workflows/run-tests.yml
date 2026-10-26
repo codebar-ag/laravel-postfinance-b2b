@@ -15,8 +15,11 @@ jobs:
       matrix:
         os: [ ubuntu-latest ]
         php: [ 8.2, 8.3, 8.4 ]
-        laravel: [ 12.* ]
+        laravel: [ 12.*, 13.* ]
         stability: [ prefer-lowest, prefer-stable ]
+        exclude:
+          - laravel: 13.*
+            php: 8.2
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }} - ${{ matrix.os }}
 
@@ -40,7 +43,7 @@ jobs:
         run: cp phpunit.xml.dist phpunit.xml
 
       - name: Execute tests
-        run: vendor/bin/pest
+        run: vendor/bin/pest --no-coverage
         env:
           POSTFINANCE_B2B_USERNAME: ${{ secrets.POSTFINANCE_B2B_USERNAME }}
           POSTFINANCE_B2B_PASSWORD: ${{ secrets.POSTFINANCE_B2B_PASSWORD }}
