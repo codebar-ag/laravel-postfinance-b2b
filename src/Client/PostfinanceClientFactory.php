@@ -6,7 +6,6 @@ use Http\Client\Common\Plugin\HeaderDefaultsPlugin;
 use Http\Client\Common\Plugin\LoggerPlugin;
 use Http\Client\Common\PluginClient;
 use Http\Discovery\Psr18ClientDiscovery;
-use Http\Message\Formatter\FullHttpMessageFormatter;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Phpro\SoapClient\Caller\EngineCaller;
@@ -29,9 +28,9 @@ class PostfinanceClientFactory
      */
     public static function factory(array $config): PostfinanceClient
     {
-        invariant($config['wsdl'], 'No WSDL location available');
-        invariant($config['username'], 'No username has been set. Please specify through .env POSTFINANCE_B2B_USERNAME');
-        invariant($config['password'], 'No username has been set. Please specify through .env POSTFINANCE_B2B_PASSWORD');
+        invariant((bool) $config['wsdl'], 'No WSDL location available');
+        invariant((bool) $config['username'], 'No username has been set. Please specify through .env POSTFINANCE_B2B_USERNAME');
+        invariant((bool) $config['password'], 'No password has been set. Please specify through .env POSTFINANCE_B2B_PASSWORD');
 
         $engine = DefaultEngineFactory::create(
             ExtSoapOptions::defaults($config['wsdl'], [
@@ -60,7 +59,7 @@ class PostfinanceClientFactory
                                 (new Logger('http'))->pushHandler(
                                     new StreamHandler(STDOUT)
                                 ),
-                                new FullHttpMessageFormatter(maxBodyLength: 99999)
+                                new RedactingHttpMessageFormatter(maxBodyLength: 99999)
                             ),
                         ] : []),
                     ]

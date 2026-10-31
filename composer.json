@@ -12,10 +12,10 @@
   "license": "MIT",
   "authors": [
     {
-        "name": "Sebastian Bürgin-Fix",
-        "email": "helpdesk@codebar.ch",
-        "homepage": "https://www.codebar.ch",
-        "role": "Software-Engineer"
+      "name": "Sebastian Bürgin-Fix",
+      "email": "helpdesk@codebar.ch",
+      "homepage": "https://www.codebar.ch",
+      "role": "Software-Engineer"
     }
   ],
   "require": {
@@ -23,23 +23,27 @@
     "ext-soap": "*",
     "ext-xsl": "*",
     "guzzlehttp/guzzle": "^7.8",
-    "illuminate/contracts": "^12.0",
+    "illuminate/contracts": "^12.0|^13.0",
     "monolog/monolog": "^3.8",
     "nyholm/psr7": "^1.8",
     "php-http/logger-plugin": "^1.4.0",
     "php-soap/psr18-wsse-middleware": "^2.5.0 <2.7.0",
     "phpro/soap-client": "^3.4.1",
+    "robrichards/wse-php": "^2.0.3",
     "spatie/laravel-package-tools": "^1.19"
   },
   "require-dev": {
     "laravel/pint": "^1.21",
     "larastan/larastan": "^v3.1",
-    "orchestra/testbench": "^10.0",
-    "pestphp/pest": "^3.7",
+    "orchestra/testbench": "^10.0|^11.0",
+    "pestphp/pest": "^3.7|^4.0",
     "phpstan/extension-installer": "^1.4",
     "phpstan/phpstan-deprecation-rules": "^2.0",
     "phpstan/phpstan-phpunit": "^2.0",
     "spatie/laravel-ray": "^1.39"
+  },
+  "conflict": {
+    "php-standard-library/php-standard-library": "*"
   },
   "autoload": {
     "psr-4": {
@@ -53,7 +57,7 @@
   },
   "scripts": {
     "analyse": "vendor/bin/phpstan analyse",
-    "test": "vendor/bin/pest",
+    "test": "vendor/bin/pest --no-coverage",
     "test-coverage": "vendor/bin/pest --coverage",
     "format": "vendor/bin/pint"
   },

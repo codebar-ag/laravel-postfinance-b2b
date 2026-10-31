@@ -15,17 +15,20 @@ jobs:
       matrix:
         os: [ ubuntu-latest ]
         php: [ 8.2, 8.3, 8.4 ]
-        laravel: [ 12.* ]
+        laravel: [ 12.*, 13.* ]
         stability: [ prefer-lowest, prefer-stable ]
+        exclude:
+          - laravel: 13.*
+            php: 8.2
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }} - ${{ matrix.os }}
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7.0.1
 
       - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+        uses: shivammathur/setup-php@2.40.0
         with:
           php-version: ${{ matrix.php }}
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick, fileinfo, openssl
@@ -40,7 +43,7 @@ jobs:
         run: cp phpunit.xml.dist phpunit.xml
 
       - name: Execute tests
-        run: vendor/bin/pest
+        run: vendor/bin/pest --no-coverage
         env:
           POSTFINANCE_B2B_USERNAME: ${{ secrets.POSTFINANCE_B2B_USERNAME }}
           POSTFINANCE_B2B_PASSWORD: ${{ secrets.POSTFINANCE_B2B_PASSWORD }}
@@ -51,7 +54,7 @@ jobs:
 
       - name: Store Log Artifacts
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7.0.2
         with:
           name: Store report artifacts
           path: ./vendor/orchestra/testbench-core/laravel/storage/logs
